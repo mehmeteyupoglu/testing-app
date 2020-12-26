@@ -1,8 +1,13 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import ReactDOM from "react-dom";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders learn the correct content", () => {
+  const root = document.createElement("div");
+  ReactDOM.render(<App />, root);
+
+  expect(root.querySelector("h1").textContent).toBe("TODOS");
+  expect(root.querySelector("label").textContent).toBe(
+    "What needs to be done?"
+  );
+  expect(root.querySelector("button").textContent).toBe("Add #1");
 });
