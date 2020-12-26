@@ -1,14 +1,11 @@
 import ReactDOM from "react-dom";
 import App from "./App";
-import { getQueriesForElement } from "@testing-library/dom";
+import { render } from "@testing-library/react";
 
-test("renders learn the correct content", () => {
-  const root = document.createElement("div");
-  ReactDOM.render(<App />, root);
+test("renders the correct content", () => {
+  const { getByText, getByLabelText } = render(<App />);
 
-  const { getByText, getByLabelText } = getQueriesForElement(root);
-
-  expect(getByText("TODOS")).not.toBeNull();
-  expect(getByLabelText("What needs to be done?")).not.toBeNull();
-  expect(getByText("Add #1")).not.toBeNull();
+  getByText("TODOS");
+  getByLabelText("What needs to be done?");
+  getByText("Add #1");
 });
